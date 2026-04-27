@@ -2,6 +2,11 @@
 #include "Engine/GameObject.h"
 #include "PerformanceTester.h"
 
+#pragma comment(lib, "Winmm.lib")  // timeBeginPeriodと timeEndPeriodで必要
+
+// LARGE_INTEGER の前方宣言
+typedef union _LARGE_INTEGER LARGE_INTEGER;
+
 /// <summary>
 /// ゲームのパフォーマンスを読み取るゲームオブジェクト
 /// </summary>
@@ -32,4 +37,7 @@ public:
 
 private:
 	PerformanceTester tester_;  // パフォーマンス計測
+
+	LARGE_INTEGER currentMicro_;   // 現在のCPU時間 (マイクロ秒)
+	LARGE_INTEGER previousMicro_;  // 前回のCPU時間 (マイクロ秒)
 };

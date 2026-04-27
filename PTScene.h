@@ -37,6 +37,12 @@ public:
 	/// <returns></returns>
 	Vector3 GetInstancePositionSphere();
 
+	/// <summary>
+	/// 生成した球体の個数を取得する
+	/// </summary>
+	/// <returns>球体の個数</returns>
+	inline uint32_t GetSphereCount() const { return sphereCount_; }
+
 private:
 	uint32_t sphereCount_;  // 球体の数
 };

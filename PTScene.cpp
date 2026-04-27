@@ -3,6 +3,7 @@
 #include "SimplePlane.h"
 #include "SimpleSphere.h"
 #include "SimpleCamera.h"
+#include "PerformanceReader.h"
 #include <cmath>
 
 PTScene::PTScene(GameObject* _pParent) :
@@ -15,6 +16,7 @@ void PTScene::Initialize()
 {
 	Instantiate<SimplePlane>(this);
 	Instantiate<SimpleCamera>(this);
+	Instantiate<PerformanceReader>(this);
 }
 
 void PTScene::Update()
