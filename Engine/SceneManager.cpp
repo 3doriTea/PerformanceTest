@@ -1,6 +1,7 @@
 #include "sceneManager.h"
 
 #include "../TestScene.h"
+#include "../PTScene.h"
 #include "Model.h"
 #include "Image.h"
 #include "Audio.h"
@@ -18,7 +19,7 @@ void SceneManager::Initialize()
 	//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TEST;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TestScene>(this);
+	Instantiate<PTScene>(this);
 }
 
 //更新
@@ -39,7 +40,7 @@ void SceneManager::Update()
 		switch (nextSceneID_)
 		{
 		case SCENE_ID_TEST: Instantiate<TestScene>(this); break;
-
+		case SCENE_ID_PT: Instantiate<PTScene>(this); break;
 		}
 		Audio::Initialize();
 		currentSceneID_ = nextSceneID_;

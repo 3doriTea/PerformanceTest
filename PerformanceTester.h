@@ -1,10 +1,8 @@
 #pragma once
 #include <string_view>
-#include <filesystem>
 #include <cstdint>
 #include <vector>
-
-namespace fs = std::filesystem;
+#include "FileSystemInclude.h"
 
 /// <summary>
 /// パフォーマンスをテストするクラス

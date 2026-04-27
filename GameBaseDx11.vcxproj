@@ -211,6 +211,7 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="FileSystemInclude.h" />
     <ClInclude Include="PerformanceTester.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PTScene.h" />

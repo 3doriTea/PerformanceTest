@@ -18,4 +18,14 @@ public:
 	/// 毎フレームの更新処理
 	/// </summary>
 	void Update() override;
+
+	/// <summary>
+	/// 描画処理
+	/// </summary>
+	inline void Draw() override {}
+
+	/// <summary>
+	/// 解放処理
+	/// </summary>
+	inline void Release() override {}
 };

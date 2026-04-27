@@ -11,7 +11,7 @@ SimpleSphere::SimpleSphere(GameObject* _pParent) :
 void SimpleSphere::Initialize()
 {
 	hModel_ = Model::Load("SimpleSphere/SimpleSphere.fbx");
-	assert(hModel_ && "シンプルな球体モデルの読み込みに失敗");
+	assert(hModel_ >= 0 && "シンプルな球体モデルの読み込みに失敗");
 }
 
 void SimpleSphere::Draw()
