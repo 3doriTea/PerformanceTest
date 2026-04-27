@@ -36,6 +36,12 @@ public:
 	//戻値：その時点でのワールド行列
 	XMMATRIX GetWorldMatrix();
 
+	/// <summary>
+	/// ワールド回転行列を取得
+	/// </summary>
+	/// <returns>その時点でのワールド回転行列</returns>
+	XMMATRIX GetNormalMatrix();
+
 	static XMFLOAT3 Float3Add(XMFLOAT3 a, XMFLOAT3 b)
 	{
 		return XMFLOAT3(a.x + b.x, a.y + b.y, a.z + b.z);

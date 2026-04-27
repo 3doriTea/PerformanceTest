@@ -1,9 +1,15 @@
 #include "SimpleCamera.h"
 #include "Engine/Input.h"
+#include "Engine/Camera.h"
 #include "Vector3.h"
 
 SimpleCamera::SimpleCamera(GameObject* _pParent) :
-	GameObject{ _pParent }
+	GameObject{ _pParent },
+	move_
+	{
+		.speedPerSec = 30.0f,
+		.anglePerSecRad = 0.52359877559f,
+	}
 {
 }
 
@@ -13,10 +19,21 @@ void SimpleCamera::Initialize()
 
 void SimpleCamera::Update()
 {
-	if (Input::IsKey(DIK_W))
-	{
+	UpdatePosition();
+	UpdateAngle();
 
-	}
+	Camera::SetPosition(transform_.position_);
+	Vector3 position{ transform_.position_ };
+	Vector3 forward
+	{
+		DirectX::XMVector3TransformCoord(
+			Vector3::Forward(),
+			transform_.GetNormalMatrix())
+	};
+
+	Vector3 targetPosition{ XMLoadFloat3(&position) + XMLoadFloat3(&forward) };
+
+	Camera::SetTarget(targetPosition);
 }
 
 bool SimpleCamera::UpdatePosition()
@@ -52,37 +69,36 @@ bool SimpleCamera::UpdatePosition()
 	Vector3 position{ transform_.position_ };
 	Vector3 moveWorld{ DirectX::XMVector3TransformCoord(move, transform_.GetNormalMatrix()) };
 	position = position + moveWorld * DT;
-	Transform().SetPosition(position);
+	transform_.position_ = position;
 
 	return true;  // TOOD: 移動しなかったらfalseを返すようにする
 }
 
 bool SimpleCamera::UpdateAngle()
 {
-	const float DT{ System().Get<GameTime>().GetDeltaTime() };
-	const auto& input{ System().Get<Input>().Getter() };
+	const float DT{ 1.0f / 60.0f };
 
 	Vector3 moveAngle{};
-	if (input.IsKey(KeyCode::Down))
+	if (Input::IsKey(DIK_DOWN))
 	{
-		moveAngle.x += moveAnglePerSecRad_;
+		moveAngle.x += move_.anglePerSecRad;
 	}
-	if (input.IsKey(KeyCode::Up))
+	if (Input::IsKey(DIK_UP))
 	{
-		moveAngle.x -= moveAnglePerSecRad_;
+		moveAngle.x -= move_.anglePerSecRad;
 	}
-	if (input.IsKey(KeyCode::Right))
+	if (Input::IsKey(DIK_RIGHT))
 	{
-		moveAngle.y += moveAnglePerSecRad_;
+		moveAngle.y += move_.anglePerSecRad;
 	}
-	if (input.IsKey(KeyCode::Left))
+	if (Input::IsKey(DIK_LEFT))
 	{
-		moveAngle.y -= moveAnglePerSecRad_;
+		moveAngle.y -= move_.anglePerSecRad;
 	}
 
-	Vector3 angle{ Transform().GetRotation() };
+	Vector3 angle{ transform_.rotate_ };
 	angle = angle + moveAngle * DT;
-	Transform().SetRotation(angle);
+	transform_.rotate_ = angle;
 
 	return true;  // TODO: 回転しなかったらfalseを返すようにする
 }

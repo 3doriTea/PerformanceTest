@@ -21,6 +21,11 @@ struct Vector3 : public DirectX::XMFLOAT3
 		DirectX::XMStoreFloat3(this, _xmV);
 	}
 
+	Vector3(const DirectX::XMFLOAT3 _xmFloat3) :
+		XMFLOAT3{ _xmFloat3 }
+	{
+	}
+
 	/// <summary>
 	/// XMVECTORに暗黙的変換する
 	/// </summary>

@@ -47,3 +47,21 @@ XMMATRIX Transform::GetWorldMatrix()
 	return  matScale_ * matRotate_ * matTranslate_;
 }
 
+XMMATRIX Transform::GetNormalMatrix()
+{
+	// 未計算なら計算する
+	if (!isSetDirect)
+	{
+		Calclation();
+	}
+	
+	// 親が存在するなら自身の回転行列に親の回転行列を掛ける
+	if (pParent_)
+	{
+		return matRotate_ * pParent_->GetNormalMatrix();
+	}
+
+	// 親がいないなら自身の回転行列だけでOk!
+	return matRotate_;
+}
+

@@ -7,7 +7,7 @@
 class PTScene : public GameObject
 {
 public:
-	PTScene(GameObject* _parent);
+	PTScene(GameObject* _pParent);
 
 	/// <summary>
 	/// 初期化処理
