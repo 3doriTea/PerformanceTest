@@ -1,5 +1,5 @@
 #include "PerformanceReader.h"
-#include ""
+#include "Engine/Input.h"
 
 PerformanceReader::PerformanceReader(GameObject* _pParent) :
 	GameObject{ _pParent },
@@ -13,6 +13,8 @@ void PerformanceReader::Update()
 
 	tester_.Update(DT);
 
-	GetParent()
-		if ()
+	GetParent();
+	if ()
+	{
+	}
 }
