@@ -8,7 +8,7 @@ SimpleCamera::SimpleCamera(GameObject* _pParent) :
 	move_
 	{
 		.speedPerSec = 30.0f,
-		.anglePerSecRad = 0.52359877559f,
+		.anglePerSecRad = 30.0f,//0.52359877559f
 	}
 {
 }

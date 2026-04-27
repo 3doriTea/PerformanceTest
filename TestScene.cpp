@@ -1,5 +1,6 @@
 #include "TestScene.h"
 #include "Player.h"
+
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
 	: GameObject(parent, "TestScene")

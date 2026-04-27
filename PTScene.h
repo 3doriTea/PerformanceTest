@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include <cstdint>
+#include "Vector3.h"
 
 /// <summary>
 /// パフォーマンス計測シーン
@@ -28,4 +30,13 @@ public:
 	/// 解放処理
 	/// </summary>
 	inline void Release() override {}
+
+	/// <summary>
+	/// 球を配置する座標を取得する
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetInstancePositionSphere();
+
+private:
+	uint32_t sphereCount_;  // 球体の数
 };

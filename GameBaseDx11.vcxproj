@@ -160,6 +160,7 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="PerformanceReader.cpp" />
     <ClCompile Include="PerformanceTester.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -213,6 +214,7 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="FileSystemInclude.h" />
+    <ClInclude Include="PerformanceReader.h" />
     <ClInclude Include="PerformanceTester.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PTScene.h" />
