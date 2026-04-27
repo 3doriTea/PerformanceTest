@@ -97,6 +97,8 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PTScene.cpp" />
+    <ClCompile Include="SimplePlane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -170,6 +172,9 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PTScene.h" />
+    <ClInclude Include="SimplePlane.h" />
+    <ClInclude Include="SimpleSphere.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
