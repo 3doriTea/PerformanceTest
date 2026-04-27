@@ -5,7 +5,7 @@
 
 SimplePlane::SimplePlane(GameObject* _pParent) :
 	GameObject{ _pParent },
-	hModel_{ 0 }
+	hModel_{ -1 }
 {
 }
 
