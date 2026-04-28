@@ -21,14 +21,14 @@ public:
 	/// <summary>
 	/// 現在のパフォーマンスを履歴に追加
 	/// </summary>
-	/// <param name="_desc">追加する説明</param>
-	void Stamp(const std::string_view _desc);
+	/// <param name="_desc">現時点のキー</param>
+	void Stamp(const uint32_t _key);
 	/// <summary>
 	/// 履歴をテキストファイルとして出力する
 	/// </summary>
-	/// <param name="_filePath">テキストファイルのパス</param>
+	/// <param name="_filePath">ファイルのパス</param>
 	void Dump(const fs::path& _filePath);
-
+	
 	/// <summary>
 	/// FPSを取得する
 	/// </summary>

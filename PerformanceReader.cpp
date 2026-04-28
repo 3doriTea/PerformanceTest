@@ -8,13 +8,20 @@ PerformanceReader::PerformanceReader(GameObject* _pParent) :
 	GameObject{ _pParent },
 	tester_{},
 	currentMicro_{},
-	previousMicro_{}
+	previousMicro_{},
+	cpuFrequency_{}
 {
 }
 
 void PerformanceReader::Update()
 {
 	static const float MICRO_TO_SEC{ 0.0000001f };  // マイクロ秒を秒に変換する
+
+	if (QueryPerformanceFrequency(&cpuFrequency_) == FALSE)
+	{
+		//assert("CPU周波数取得に失敗");
+		return;
+	}
 
 	if (QueryPerformanceCounter(&currentMicro_) == FALSE)
 	{
@@ -25,10 +32,10 @@ void PerformanceReader::Update()
 	// 前フレームと今のマイクロ秒差
 	const LONGLONG diff{ currentMicro_.QuadPart - previousMicro_.QuadPart };
 
-	currentMicro_ = previousMicro_;
+	previousMicro_ = currentMicro_;
 
 	// フレーム間時間
-	static const float DT{ static_cast<float>(diff) * MICRO_TO_SEC };
+	const float DT{ static_cast<float>(diff) / static_cast<float>(cpuFrequency_.QuadPart)};
 
 	tester_.Update(DT);
 
@@ -37,12 +44,12 @@ void PerformanceReader::Update()
 	{
 		if (Input::IsKey(DIK_G))
 		{
-			tester_.Stamp(std::format("SphereCount: {}", pPTScene->GetSphereCount()));
+			tester_.Stamp(pPTScene->GetSphereCount());
 		}
 	}
 
 	if (Input::IsKeyDown(DIK_M))
 	{
-		tester_.Dump("./Performance.log");
+		tester_.Dump("./Performance.csv");
 	}
 }
